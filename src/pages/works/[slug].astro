@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { works, url, formatDate } from '../../lib/content';
+export function getStaticPaths(){return works.map(work=>({params:{slug:work.slug},props:{work}}));}
+const {work}=Astro.props;
+const index=works.findIndex(w=>w.slug===work.slug);
+const next=works[(index+1)%works.length];
+---
+<Layout title={work.title} description={work.description || work.title} image={work.cover.src}>
+<article class="detail wrap">
+<a class="back-link" href={url('/')}>← 作品一覧へ</a>
+<header class="detail-header"><div><p class="eyebrow">{work.tags.join(' / ') || 'WORK'}</p><h1>{work.title}</h1></div><div class="detail-meta"><time datetime={work.date}>{formatDate(work.date)}</time><span>{work.images.length} {work.images.length===1?'image':'pages'}</span></div></header>
+{work.description&&<p class="work-description">{work.description}</p>}
+{work.images.length>1&&<nav class="page-index" aria-label="ページへ移動"><span>PAGE</span>{work.images.map((_,i)=><a href={'#page-'+(i+1)}>{String(i+1).padStart(2,'0')}</a>)}</nav>}
+<div class="pages">{work.images.map((image,i)=><figure id={'page-'+(i+1)}><a class="image-link" href={url(image.src)} data-full={url(image.src)} data-alt={image.alt} aria-label={'画像を拡大：'+image.alt}><img src={url(image.src)} alt={image.alt} width={image.width} height={image.height} loading={i===0?'eager':'lazy'} decoding="async" /><span aria-hidden="true">拡大 ↗</span></a><figcaption><span class="page-number">{String(i+1).padStart(2,'0')}</span><p>{image.caption}</p></figcaption></figure>)}</div>
+<nav class="work-navigation" aria-label="作品間の移動"><a href={url('/')}>← すべての作品</a>{next&&next.slug!==work.slug&&<a href={url('/works/'+next.slug+'/')}>次の作品：{next.title} →</a>}</nav>
+</article>
+<dialog class="lightbox" aria-label="画像の拡大表示"><button class="lightbox-close" aria-label="拡大表示を閉じる">閉じる ×</button><img alt="" /></dialog>
+</Layout>
+<script>
+const dialog=document.querySelector<HTMLDialogElement>('.lightbox')!;
+let opener:HTMLAnchorElement|null=null;
+for(const link of document.querySelectorAll<HTMLAnchorElement>('[data-full]')){
+ link.addEventListener('click',(event)=>{
+  if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();opener=link;
+  const image=dialog.querySelector('img')!;image.src=link.dataset.full!;image.alt=link.dataset.alt||'';
+  dialog.showModal();document.body.style.overflow='hidden';
+ });
+}
+dialog.querySelector('button')!.addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+dialog.addEventListener('close',()=>{document.body.style.overflow='';opener?.focus();});
+</script>

@@ -1,0 +1,25 @@
+{
+  "published": true,
+  "featured": false,
+  "description": "複数ページの表示を確認するためのサンプルです。ページの順序と説明は管理画面で変更できます。",
+  "slug": "small-story",
+  "title": "小さな物語 — サンプル",
+  "date": "2026-03-15",
+  "tags": [
+    "漫画",
+    "日常"
+  ],
+  "order": 3,
+  "images": [
+    {
+      "src": "/media/sample-comic-1.svg",
+      "alt": "窓と机を描いた漫画のサンプル1ページ目",
+      "caption": "1ページ目。各ページに説明を付けられます。"
+    },
+    {
+      "src": "/media/sample-comic-2.svg",
+      "alt": "窓辺の植物を描いた漫画のサンプル2ページ目",
+      "caption": "2ページ目。上から順番に表示されます。"
+    }
+  ]
+}

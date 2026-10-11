@@ -1,0 +1,112 @@
+media:
+  input: content/media
+  output: /media
+  rename: random
+  extensions: [jpg, jpeg, png, webp, avif]
+content:
+  - name: works
+    label: 作品
+    type: collection
+    path: content/works
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      primary: title
+      fields: [title, date, published, order]
+      sort: date
+      order: desc
+    fields:
+      - name: slug
+        label: 作品URL（半角英数字とハイフン）
+        type: string
+        required: true
+        pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        description: "例：spring-letter。作品ごとに異なる値を指定します。公開後の変更はURLが変わります。"
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: description
+        label: 作品全体の説明
+        type: text
+      - name: date
+        label: 制作日
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+          time: false
+      - name: tags
+        label: タグ
+        type: string
+        list: true
+        description: "例：イラスト、漫画、オリジナル"
+      - name: published
+        label: サイトに掲載する
+        type: boolean
+        description: "オフでも公開GitHubリポジトリからは閲覧可能です。秘密の素材は登録しないでください。"
+      - name: featured
+        label: おすすめ作品
+        type: boolean
+      - name: order
+        label: 表示順
+        type: number
+        description: "小さい数が先。おすすめ作品が優先されます。未入力は100。"
+      - name: cover
+        label: 表紙画像
+        type: image
+        description: "未指定なら最初の画像が表紙になります。"
+      - name: images
+        label: 画像・漫画のページ
+        type: object
+        required: true
+        list:
+          min: 1
+          collapsible: true
+        description: "リストの順序が掲載順です。各画像に説明を記入できます。"
+        fields:
+          - name: src
+            label: 画像
+            type: image
+            required: true
+          - name: alt
+            label: 画像の内容（代替テキスト）
+            type: string
+            required: true
+          - name: caption
+            label: 画像ごとの説明文
+            type: text
+  - name: settings
+    label: プロフィール・サイト設定
+    type: file
+    path: content/settings.json
+    format: json
+    fields:
+      - { name: title, label: サイト名, type: string, required: true }
+      - { name: name, label: 作者名, type: string, required: true }
+      - { name: tagline, label: トップの見出し, type: string, required: true }
+      - { name: description, label: サイトの説明, type: text, required: true }
+      - { name: bio, label: 自己紹介, type: text }
+      - { name: tools, label: 制作環境, type: text }
+      - { name: email, label: 公開用メールアドレス（任意）, type: string }
+      - { name: socialUrl, label: 自分のSNSのURL（https）, type: string }
+      - { name: copyright, label: 著作権表記の名前, type: string, required: true }
+  - name: artists
+    label: 参考絵師
+    type: file
+    path: content/artists.json
+    format: json
+    fields:
+      - name: artists
+        label: 参考絵師リスト
+        type: object
+        list: true
+        fields:
+          - { name: name, label: 名前, type: string, required: true }
+          - name: url
+            label: XのURL
+            type: string
+            required: true
+            pattern: "^https://(www\\.)?(x\\.com|twitter\\.com)/.+$"
+          - { name: description, label: 紹介文, type: text }
+          - { name: tags, label: タグ, type: string, list: true }

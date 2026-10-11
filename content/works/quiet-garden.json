@@ -1,0 +1,20 @@
+{
+  "published": true,
+  "featured": true,
+  "description": "表示確認用のサンプル作品です。管理画面から、ご自身の画像と説明文に差し替えてください。",
+  "slug": "quiet-garden",
+  "title": "静かな庭 — サンプル",
+  "date": "2026-04-12",
+  "tags": [
+    "イラスト",
+    "植物"
+  ],
+  "order": 1,
+  "images": [
+    {
+      "src": "/media/sample-garden.svg",
+      "alt": "緑の葉と朱色の実を幾何学的に描いたサンプル",
+      "caption": "画像ごとの説明文がここに表示されます。"
+    }
+  ]
+}

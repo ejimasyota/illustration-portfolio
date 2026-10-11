@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {artists} from '../lib/content';
+---
+<Layout title="参考絵師"><section class="text-page wrap"><p class="eyebrow">INSPIRATION</p><h1>参考絵師<span>Artists I follow</span></h1><p class="page-intro">創作のヒントをもらっている、絵師の方々。</p><div class="artist-list">{artists.map((artist,i)=><article><span class="artist-number">{String(i+1).padStart(2,'0')}</span><div><h2><a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}<span aria-hidden="true">↗</span><span class="sr-only">（Xを新しいタブで開く）</span></a></h2><p class="prose">{artist.description}</p><div class="artist-tags">{artist.tags.map(tag=><span>{tag}</span>)}</div></div></article>)}</div>{artists.length===0&&<p class="empty">リンク集は準備中です。</p>}</section></Layout>
