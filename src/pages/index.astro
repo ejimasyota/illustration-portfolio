@@ -8,13 +8,6 @@ const tags = [...new Set(works.flatMap(work => work.tags))];
 
 <Layout image={works[0]?.cover.src}>
   <section class="works-section wrap" aria-labelledby="works-heading">
-    <div class="section-heading">
-      <h2 id="works-heading">作品一覧</h2>
-      <span class="work-count" id="result-count" aria-live="polite">
-        {works.length} WORKS
-      </span>
-    </div>
-
     <div class="toolbar" id="filters" hidden>
       <div class="filter-buttons" role="group" aria-label="タグで絞り込む">
         <button class="filter active" data-tag="" aria-pressed="true">
@@ -94,7 +87,6 @@ const tags = [...new Set(works.flatMap(work => work.tags))];
   const search = document.querySelector<HTMLInputElement>('#search')!;
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-tag]')];
   const cards = [...document.querySelectorAll<HTMLElement>('.work-card')];
-  const resultCount = document.querySelector<HTMLElement>('#result-count')!;
   const empty = document.querySelector<HTMLElement>('#empty')!;
 
   controls.hidden = false;
@@ -114,8 +106,6 @@ const tags = [...new Set(works.flatMap(work => work.tags))];
       card.hidden = !show;
       if (show) count++;
     }
-
-    resultCount.textContent = `${count} WORKS`;
     empty.hidden = count > 0;
   }
 
