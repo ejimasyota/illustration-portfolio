@@ -85,6 +85,7 @@ content:
       - { name: title, label: サイト名, type: string, required: true }
       - { name: name, label: 作者名, type: string, required: true }
       - { name: description, label: サイトの説明, type: text, required: true }
+      - { name: tagline, label: キャッチコピー, type: string, required: true }
       - { name: bio, label: 自己紹介, type: text }
       - { name: tools, label: 制作環境, type: text }
       - { name: email, label: 公開用メールアドレス（任意）, type: string }
