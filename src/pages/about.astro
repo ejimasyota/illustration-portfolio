@@ -2,6 +2,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { settings, url } from '../lib/content';
+import ProfileImage from '../../images/free.webp';
 ---
 
 <Layout title="プロフィール">
@@ -12,7 +13,7 @@ import { settings, url } from '../lib/content';
     <div class="about-layout">
       <div class="profile-symbol">
         <img
-          src={url('../../images/free.webp')}
+          src={ProfileImage.src}
           alt={`${settings.name}のプロフィール画像`}
           width="600"
           height="600"
