@@ -10,10 +10,14 @@ import { settings, url } from '../lib/content';
       <h2 id="works-heading">プロフィール</h2>
     </div>
     <div class="about-layout">
-      <div class="profile-symbol" aria-hidden="true">
-        <span>線</span>
-        <span>色</span>
-        <span>物語</span>
+      <div class="profile-symbol">
+        <img
+          src={url('/images/free.webp')}
+          alt={`${settings.name}のプロフィール画像`}
+          width="600"
+          height="600"
+          loading="lazy"
+        />
       </div>
 
       <div>
