@@ -613,7 +613,7 @@ h1,h2,h3,p {
 }
 
 .text-page {
-  padding-top: 65px;
+  padding-top: 0;
   min-height: 65vh;
 }
 
