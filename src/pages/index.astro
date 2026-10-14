@@ -5,7 +5,7 @@ const tags = [...new Set(works.flatMap(w=>w.tags))];
 ---
 <Layout image={works[0]?.cover.src}>
 <section class="works-section wrap" aria-labelledby="works-heading">
-<div class="section-heading"><h2 id="works-heading">作品<span>Works</span></h2><span class="work-count" id="result-count" aria-live="polite">{works.length} WORKS</span></div>
+<div class="section-heading"><h2 id="works-heading">作品一覧</h2><span class="work-count" id="result-count" aria-live="polite">{works.length} WORKS</span></div>
 <div class="toolbar" id="filters" hidden>
 <div class="filter-buttons" role="group" aria-label="タグで絞り込む"><button class="filter active" data-tag="" aria-pressed="true">すべて</button>{tags.map(tag=><button class="filter" data-tag={tag} aria-pressed="false">{tag}</button>)}</div>
 <label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">作品を検索</span><input id="search" type="search" placeholder="作品を検索" autocomplete="off" /></label>
