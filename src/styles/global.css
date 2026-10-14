@@ -217,6 +217,7 @@ h1,h2,h3,p {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 18px;
+  padding-top: 18px;
 }
 
 .section-heading h2 {
@@ -1045,7 +1046,6 @@ h1,h2,h3,p {
   }
 
   .section-heading h2 {
-    padding-top:18px;
     font-size: 18px;
   }
 }
