@@ -4,7 +4,7 @@ import { settings, works, url, formatDate } from '../lib/content';
 const tags = [...new Set(works.flatMap(w=>w.tags))];
 ---
 <Layout image={works[0]?.cover.src}>
-<section class="hero wrap"><div><p class="eyebrow"><span></span> PERSONAL PORTFOLIO</p><h1>{settings.tagline}</h1><p class="hero-description">{settings.description}</p></div><div class="hero-note"><span>Selected works</span><strong>線、色、物語。</strong><small>ひとつずつ、大切に。</small></div></section>
+<section class="hero wrap"><div><p class="eyebrow"><span></span> PERSONAL PORTFOLIO</p><h1>{settings.tagline}</h1><p class="hero-description">{settings.description}</p></div></section>
 <section class="works-section wrap" aria-labelledby="works-heading">
 <div class="section-heading"><h2 id="works-heading">作品<span>Works</span></h2><span class="work-count" id="result-count" aria-live="polite">{works.length} WORKS</span></div>
 <div class="toolbar" id="filters" hidden>
