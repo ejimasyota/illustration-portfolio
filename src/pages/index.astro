@@ -8,6 +8,10 @@ const tags = [...new Set(works.flatMap(work => work.tags))];
 
 <Layout image={works[0]?.cover.src}>
   <section class="works-section wrap" aria-labelledby="works-heading">
+    <div class="section-heading">
+      <h2 id="works-heading">作品一覧</h2>
+    </div>
+
     <div class="toolbar" id="filters" hidden>
       <div class="filter-buttons" role="group" aria-label="タグで絞り込む">
         <button class="filter active" data-tag="" aria-pressed="true">
