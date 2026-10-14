@@ -18,7 +18,6 @@ const tags = [...new Set(works.flatMap(w=>w.tags))];
 </div>
 <p class="empty" id="empty" hidden={works.length>0}>{works.length?'条件に合う作品はありません。検索語やタグを変更してください。':'作品は準備中です。公開まで、もうしばらくお待ちください。'}</p>
 </section>
-<section class="bottom-note wrap"><p>描いたものと、<br/>そのときのこと。</p><a class="text-link" href={url('/about/')}>作者について <span>↗</span></a></section>
 </Layout>
 <script>
 const controls=document.querySelector<HTMLElement>('#filters')!;
